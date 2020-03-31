@@ -10,7 +10,7 @@ namespace Insertion
         public SortingList(int requiredLength)
         {
             Length = requiredLength;
-            list = new int[_____];
+            list = new int[Length];
         }
 
         public void Randomise()
@@ -23,20 +23,20 @@ namespace Insertion
 
         public void Print()
         {
-            foreach (int i in ____)
+            foreach (int i in list)
                 Console.Write(String.Format("{0}, ", i));
             Console.WriteLine("");
         }
 
         public void Insert(int value)
-        {            
+        {
             /* First, find the right place for the item to go in */
-            for (int i = 0; i < list.______; i++)
+            for (int i = 0; i < Length; i++)
             {
                 if (list[i] == 0)
                 {
                     /* There is nothing in this place, so just take it */
-                    list[_] = value;
+                    list[i] = value;
                     break;
                 }
                 if (value < list[i])
@@ -90,20 +90,20 @@ namespace Insertion
         {
             var unsortedList = new SortingList(10);
             var sortedList = new SortingList(unsortedList.Length);
-            
+
             /* Let's fill the unsorted list with all sorts of junk */
-            unsortedList._________();
+            unsortedList.Randomise();
             unsortedList.Print();
 
             /* This is where we do the insertion sort-- doesn't
              * object oriented make this look easy? */
 
-            for (int i = 0; i < unsortedList.______; i++)
+            for (int i = 0; i < unsortedList.Length; i++)
             {
                 sortedList.Insert(unsortedList.Pop());
             }
 
-            sortedList._____();
+            sortedList.Print();
         }
     }
 }
