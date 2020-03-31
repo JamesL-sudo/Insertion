@@ -53,18 +53,39 @@ namespace Insertion
             }
             this.Print();
         }
+    class BubbleSort{
+            private int[] list;
+            public readonly int Length;
 
-        /* Example of a docstring */
-        /// <summary>
-        /// Returns the first value remaining from the List.
-        /// 
-        /// It replaces the value with -1 to 'delete' it, so this number
-        /// is special.
-        /// 
-        /// It's OK to do this only because we are only sorting positive
-        /// numbers.  This would need a rewrite if we were to use negatives!
-        /// </summary>
-        /// <returns>int representing the value, or -1 if list is empty</returns>
+            public SortingList2(int requiredLength){
+                Length = requiredLength;
+                list = new int[Length];
+            }
+            public void Randomise(){
+                var random = new Random();
+                for (inr i =0;i<list.Length;i++){
+                    list[i]= random.next(50);
+                }
+            }
+            public void Print(){
+                for(int i=0;i<list.Length;i++){
+                    Console.Write(list[i]);
+                    Console.Write(", ");
+                }
+            }
+            public void Sort(){
+                for(int j=0;j<list.Length;j++){
+                    for(int i=0;i<list.Length-1;i++){
+                        if (list[i]>list[i+1]){
+                            var temp = list[i+1];
+                            list[i+1] = list[i];
+                            list[i] = temp;
+                        }
+                    }
+                }
+            }
+        }
+
         public int Pop()
         {
             int ret = -1;
@@ -90,11 +111,12 @@ namespace Insertion
         {
             var unsortedList = new SortingList(10);
             var sortedList = new SortingList(unsortedList.Length);
-
+            var Bubblelist = new SortingList2(10);
             /* Let's fill the unsorted list with all sorts of junk */
             unsortedList.Randomise();
             unsortedList.Print();
-
+            Bubblelist.Print();
+            Bubblelist.Sort();
             /* This is where we do the insertion sort-- doesn't
              * object oriented make this look easy? */
 
